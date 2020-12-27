@@ -1,0 +1,28 @@
+.user-list {
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows: auto;
+  width: 100%;
+  align-content: center;
+  justify-content: center;
+  margin-top: 10px;
+  height: 30px;
+}
+
+#user-box {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#p1 {
+  text-align: left;
+  margin-top: 10px;
+  height: 30px;
+}
+
+#p2 {
+  text-align: right;
+  margin-top: 10px;
+  height: 30px;
+}

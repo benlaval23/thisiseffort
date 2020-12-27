@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+  margin-top: 10%;
+}
+
+#show-votes {
+  display: none;
+}
+
+#buttons {
+  display: inline-block;
+  width: 80%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#invite {
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  border-width: 0;
+  color: #287996;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 8px #393939;
+  margin: 0 auto;
+}
+
+#show-votes {
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  border-width: 0;
+  color: #287996;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 8px #393939;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#number:hover {
+  background-color: white;
+}
+
+#invite:hover {
+  background-color: white;
+}
+
+#invite:active {
+  box-shadow: none;
+}
+
+#show-votes:hover {
+  background-color: white;
+}
+
+#show-votes:active {
+  box-shadow: none;
+}
+
+.fas {
+  transform: scale(1.5,1.5);
+}
+
+#new-room-button {
+  margin: 0;
+  width: 60px;
+  height: 40px;
+  border: none;
+  background: none;
+  color: white;
+  border-radius: 10px;
+}
+
+
+#new-room-button {
+  background: none;
+}
+
+#new-room-button:hover {
+  background: rgba(256, 256, 256, 0.4);
+}
+
+#new-room-button:active  {
+  background: rgba(256, 256, 256, 0.2);
+}
+
+.chooseRoom {
+  margin-top: 60px;
+}

@@ -1,0 +1,19 @@
+#number {
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  border-width: 0;
+  color: #287996;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 8px #393939;
+}
+
+#number:hover {
+  background-color: white;
+}
+
+#number:active {
+  background-color: white;
+  box-shadow: none;
+}

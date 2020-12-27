@@ -2,42 +2,71 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="https://i.ibb.co/GxcZRMq/thisiseffort.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <title>thisiseffort.io</title>
+    <style>
+      #copied { display: none; }
+      button { margin: 10px; color: black; }
+      #root { max-width: 500px; margin: 0 auto; }
+      body { background-image: url("https://i.ibb.co/3S8WpV4/background.png"); margin: 0 15px; background-repeat: none; background-size: cover; }
+      * { font-family: 'Oxygen Mono', monospace;}
+      h1 {color: white; font-size: 32px; text-align: center; margin-top: 40%; }
+      p { color: white; font-size: 16px; }
+      i { color: white }
+      input { color: white; }
+      #chooseRoom { text-align: center; width: 100%; display: inline-block; }
+      #new-room-input { width: 400px; font-size: 26px; }
+      #new-room-input::-webkit-input-placeholder{ font-size: 26px; }
+      #new-room-button { margin: 0 auto; }
+      .chooseRoom { text-align: center; margin: 20% auto; }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/718e01dd71.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id="root">
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+    </script>
+    <script>
+      $(document).ready(function(){
+        $("#numbers").click(function(){
+        $("#numbers").hide();
+        $("#show-votes").show();
+        });
+      });
+      $(document).ready(function(){
+        $("#refresh").click(function(){
+        $("#numbers").show();
+        $("#show-votes").hide();
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function(){
+        var $temp = $("<input>");
+        var $url = $(location).attr('href');
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+        $('.clipboard').click(function(){
+          $("body").append($temp);
+          $temp.val($url).select();
+          document.execCommand("copy");
+          $temp.remove();
+          $("#copied").show();
+          setTimeout(function() { $("#copied").hide(); }, 1000);
+        })
+      });
+    </script>
   </body>
 </html>
