@@ -22,23 +22,23 @@ const io = module.exports.io = require('socket.io')(server, {
 const port = process.env.PORT || 3300;
 
 // youtube
-app.use( express.static(__dirname + '/../../build'));
+// app.use( express.static(__dirname + '/../../build'));
 
 
-// if (process.env.NODE_ENV === 'production') {
-//   // Exprees will serve up production assets
-//   app.use(express.static('../../build'));
+if (process.env.NODE_ENV === 'production') {
+  // Exprees will serve up production assets
+  app.use( express.static(__dirname + '/../../build'));
 
-//   // Express serve up index.html file if it doesn't recognize route
-//   const path = require('path');
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'server.html'));
-//   });
-// }
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'server.html'));
+  });
+}
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + './server.html');
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + './server.html');
+// });
 
 var rooms = {};
 
