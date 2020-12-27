@@ -1,20 +1,24 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-const io = module.exports.io = require('socket.io')(server, {
+const io = require('socket.io')(server, {
   cors: {
     origin: '*',
     methods: ['GET', 'POST'],
   },
 });
-
 const PORT = process.env.PORT || 3300;
 
-app.use( express.static(__dirname + '/../../build'));
+app.use(express.static(path.join(__dirname, '../../build')));
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + './server.html');
-});
+app.get('/', (req, res, next) => res.sendFile(__dirname + './index.html'));
+
+// app.use( express.static(__dirname + '/../../build'));
+
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + './server.html');
+// });
 
 var rooms = {};
 
