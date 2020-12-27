@@ -25,9 +25,20 @@ const port = process.env.PORT || 3300;
 app.use( express.static(__dirname + '/../../build'));
 
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + './server.html');
-});
+if (process.env.NODE_ENV === 'production') {
+  // Exprees will serve up production assets
+  app.use(express.static('../../build'));
+
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'server.html'));
+  });
+}
+
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + './server.html');
+// });
 
 var rooms = {};
 
