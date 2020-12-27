@@ -1,14 +1,3 @@
-// youtube
-// const express = require('express')();
-// const app = express();
-// const server = require('http').Server(app);
-// const io = module.exports.io = require('socket.io')(server, {
-//   cors: {
-//     origin: '*',
-//     methods: ['GET', 'POST'],
-//   },
-// });
-
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
@@ -18,16 +7,20 @@ const io = module.exports.io = require('socket.io')(server, {
     methods: ['GET', 'POST'],
   },
 });
+const INDEX = '../../build'
+const PORT = process.env.PORT || 3300;
 
-const port = process.env.PORT || 3300;
-
-// youtube
-app.use( express.static(__dirname + '/../../build'));
+app.use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + './server.html');
-});
+
+
+// app.use( express.static(__dirname + '/../../build'));
+
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + './server.html');
+// });
 
 var rooms = {};
 
@@ -118,94 +111,6 @@ io.on('connection', socket => {
 
 });
 
-server.listen(port, () => {
-  console.log(`listening on *:${port}`);
-});
-
-// let users = [];
-
-// const emitUsers = () => {
-//   io.emit('users', users);
-// };
-
-// const removeUser = (users, socketId) => {
-//   users.map(u => {
-//     if (u.socketId === socketId) {
-//       const index = users.indexOf(u);
-//       users.splice(index, 1);
-//     }
-//     return users;
-//   });
-// };
-
-// const updateName = (users, newName, socketId) => {
-//   users.map(u => {
-//     if (u.socketId === socketId) {
-//       u.name = newName;
-//     }
-//   });
-//   return users;
-// };
-
-// const updateVote = (users, newVote, socketId) => {
-//   users.map(u => {
-//     if (u.socketId === socketId) {
-//       u.vote = newVote;
-//       u.status = 'Voted';
-//     }
-//   });
-//   return users;
-// };
-
-// const refreshVotes = (users) => {
-//   users.map(u => {
-//     u.vote = 'No vote';
-//     u.status = 'Awaiting'
-//   });
-//   return users;
-// };
-
-
-// io.on('connection', socket => {
-//   console.log('user connected: ', socket.id);
-
-//   socket.on('new_user', user => {
-//     user.socketId = socket.id;
-//     users.push(user);
-//     console.log('Current connected Users: ', users);
-//     emitUsers();
-//   });
-
-//   socket.on('change_title', newTitle => {
-//     console.log('Server receiving newTitle');
-//     io.sockets.emit('send_title', newTitle);
-//   });
-
-//   socket.on('change_name', newName => {
-//     console.log('Server receiving newName');
-//     updateName(users, newName, socket.id);
-//     emitUsers();
-//   });
-
-//   socket.on('add_vote', newVote => {
-//     updateVote(users, newVote, socket.id);
-//     emitUsers();
-//   });
-
-//   socket.on('show_votes', () => {
-//     io.sockets.emit('show_votes');
-//   });
-
-//   socket.on('refresh_title', () => {
-//     refreshVotes(users);
-//     emitUsers();
-//     io.sockets.emit('blank_title');
-//   })
-
-//   socket.on('disconnect', () => {
-//     console.log('user disconnected: ', socket.id);
-//     removeUser(users, socket.id);
-//     console.log('Current connected Users: ', users);
-//     emitUsers();
-//   });
+// server.listen(PORT, () => {
+//   console.log(`listening on *:${PORT}`);
 // });
