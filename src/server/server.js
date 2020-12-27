@@ -7,20 +7,14 @@ const io = module.exports.io = require('socket.io')(server, {
     methods: ['GET', 'POST'],
   },
 });
-const INDEX = '../../build'
+
 const PORT = process.env.PORT || 3300;
 
-app.use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+app.use( express.static(__dirname + '/../../build'));
 
-
-
-
-// app.use( express.static(__dirname + '/../../build'));
-
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + './server.html');
-// });
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + './server.html');
+});
 
 var rooms = {};
 
@@ -111,6 +105,6 @@ io.on('connection', socket => {
 
 });
 
-// server.listen(PORT, () => {
-//   console.log(`listening on *:${PORT}`);
-// });
+server.listen(PORT, () => {
+  console.log(`listening on *:${PORT}`);
+});
