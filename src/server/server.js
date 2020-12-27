@@ -19,7 +19,7 @@ const io = module.exports.io = require('socket.io')(server, {
   },
 });
 
-const port = process.env.port || 3300;
+const port = process.env.PORT || 3300;
 
 // youtube
 app.use( express.static(__dirname + '/../../build'));
