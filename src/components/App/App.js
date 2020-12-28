@@ -9,7 +9,6 @@ import io from 'socket.io-client';
 
 
 const socket = io.connect('/');
-// const socket = io.connect('http://localhost:3300/');
 
 class App extends React.Component {
   constructor(props) {
@@ -66,7 +65,6 @@ class App extends React.Component {
 
 
   render() {
-    // console.log(props.match.params.roomName)
     return (
       <div className="App">
         <div className="main">

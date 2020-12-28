@@ -10,19 +10,13 @@ const io = require('socket.io')(server, {
 });
 const PORT = process.env.PORT || 3300;
 
-// app.use(express.static(path.join(__dirname, '../../build')));
-// app.get('/', (req, res, next) => res.sendFile(__dirname + './index.html'));
-
 const root = path.join(__dirname, '/../../build')
 
 app.use( express.static(root));
 
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(root, 'index.html'));
 });
-
-
 
 
 var rooms = {};
