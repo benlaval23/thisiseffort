@@ -10,15 +10,15 @@ const io = require('socket.io')(server, {
 });
 const PORT = process.env.PORT || 3300;
 
-app.use(express.static(path.join(__dirname, '../../build')));
+// app.use(express.static(path.join(__dirname, '../../build')));
 
-app.get('/', (req, res, next) => res.sendFile(__dirname + './index.html'));
+// app.get('/', (req, res, next) => res.sendFile(__dirname + './index.html'));
 
-// app.use( express.static(__dirname + '/../../build'));
+app.use( express.static(__dirname + '/../../build'));
 
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + './server.html');
-// });
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + './index.html');
+});
 
 var rooms = {};
 
@@ -102,6 +102,7 @@ io.on('connection', socket => {
           rooms[room].users.splice(index, 1);
         };
       });
+      rooms[room].count -= 1;
       console.log(rooms[room]);
       emitRoom(room);
     });

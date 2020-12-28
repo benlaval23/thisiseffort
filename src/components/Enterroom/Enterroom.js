@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, link, Route } from 'react-router-dom';
 
 class Enterroom extends React.Component {
   state = {
