@@ -16,7 +16,7 @@ class Enterroom extends React.Component {
     return (
       // <div className="chooseRoom">
         <form onSubmit={this.go} id="chooseRoom">
-          <input id="new-room-input" type="text" name="room" value={this.path} onChange={this.setPath} placeholder="Create new room" />
+          <input id="new-room-input" type="text" name="room" value={this.path} onChange={this.setPath} placeholder="Enter room name" />
           <button id="new-room-button" type="button"  onClick={this.go}>
             <i className="fas fa-sign-in-alt"></i>
           </button>
