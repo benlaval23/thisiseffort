@@ -64,7 +64,9 @@ class App extends React.Component {
     socket.emit('refresh_title');
   }
 
+
   render() {
+    // console.log(props.match.params.roomName)
     return (
       <div className="App">
         <div className="main">

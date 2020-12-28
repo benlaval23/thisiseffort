@@ -11,7 +11,7 @@ ReactDOM.render(
     <h1>thisiseffort.io</h1>
     <Router>
       <Route path="/" exact component={Enterroom} />
-      <Route path="/room/" component={App} />
+      <Route path="/room/:roomName" component={App} />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
