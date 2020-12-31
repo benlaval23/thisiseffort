@@ -23,7 +23,7 @@ class Enterroom extends React.Component {
     if (this.state.path) {
       window.location.href = `room/${this.state.path}`
     } else {
-      window.location.href = `room/${this.randomString(4)}-${this.randomString(4)}-${this.randomString(4)}`
+      window.location.href = `room/${this.randomString(3)}-${this.randomString(4)}-${this.randomString(3)}`
     }
   }
 
