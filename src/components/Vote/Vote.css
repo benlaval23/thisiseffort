@@ -6,14 +6,15 @@
   color: #287996;
   font-size: 18px;
   font-weight: bold;
+  background-color: white;
   box-shadow: 0 0 8px #393939;
 }
 
 #number:hover {
-  background-color: white;
+  background-color: #EBEBEB;
 }
 
 #number:active {
-  background-color: white;
+  background-color: #EBEBEB;
   box-shadow: none;
 }

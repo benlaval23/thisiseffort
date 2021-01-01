@@ -6,9 +6,11 @@ import { Vote } from '../Vote/Vote';
 import React from 'react';
 import '../Userlist/Userlist.css';
 import io from 'socket.io-client';
-
+import Confetti from 'react-confetti'
 
 const socket = io.connect('/');
+
+// const { width, height } = useWindowSize()
 
 class App extends React.Component {
   constructor(props) {
@@ -17,13 +19,15 @@ class App extends React.Component {
       users: [],
       title: '',
       show: false,
-      count: 0
+      count: 0,
+      confetti: false
     };
 
     this.changeName = this.changeName.bind(this);
+    this.showVotes = this.showVotes.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let user = {
       name: 'New User',
       status: 'Awaiting',
@@ -37,7 +41,8 @@ class App extends React.Component {
         users: room.users,
         title: room.title,
         show: room.show,
-        count: room.count
+        count: room.count,
+        confetti: room.confetti
       });
       console.log("Current room: ", room);
     });
@@ -59,6 +64,7 @@ class App extends React.Component {
     socket.emit('show_votes');
   }
 
+
   refreshTitle() {
     socket.emit('refresh_title');
   }
@@ -67,6 +73,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        {this.state.confetti  && <Confetti width="2000" height="1000" />}
         <div className="main">
           <Nameshow onChange={this.changeName} />
           <Ticketshow onChange={this.changeTitle} title={this.state.title} onClick={this.refreshTitle}/>

@@ -18,10 +18,13 @@ export class Ticketshow extends React.Component {
 
   render() {
     return (
+      <div>
         <form>
-          <input id="top-form" className="ticket" type="text" value={this.props.title} onChange={this.handleChange} placeholder="Your ticket" />
+          <input id="top-form" className="ticket" type="text" /*value={this.props.title}*/ onChange={this.handleChange} placeholder="Your ticket" />
           <button type="button" id="refresh" onClick={this.refreshTitle}><i className="fas fa-redo"></i></button>
         </form>
+        <h3>Ticket: {this.props.title}</h3>
+      </div>
     );
   }
 }

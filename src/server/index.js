@@ -40,7 +40,8 @@ io.on('connection', socket => {
         users: [user],
         title: null,
         show: false,
-        count: 1
+        count: 1,
+        confetti: false
       };
     } else {
       rooms[room].count += 1;
@@ -78,6 +79,9 @@ io.on('connection', socket => {
 
     socket.on('show_votes', () => {
       rooms[room].show = true;
+      if (rooms[room].users.every( u => u.vote === rooms[room].users[0].vote)) {
+        rooms[room].confetti = true;
+      };
       console.log(rooms[room]);
       emitRoom(room);
     });
@@ -89,6 +93,7 @@ io.on('connection', socket => {
       });
       rooms[room].title = '';
       rooms[room].show = false;
+      rooms[room].confetti = false;
       console.log(rooms[room]);
       emitRoom(room);
     });

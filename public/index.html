@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="thisiseffort.png" />
+    <link rel="icon" href="/thisiseffort.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -14,13 +14,13 @@
       #copied { display: none; }
       button { margin: 10px; color: black; }
       #root { max-width: 500px; margin: 0 auto; }
-      body { /*background-image: url("./background.png");*/ background-color: lightblue; margin: 0 15px; background-repeat: none; background-size: cover; }
+      body { background-image: url("/background-image.jpg"); margin: 0 15px; background-repeat: none; background-size: cover; }
       * { font-family: 'Oxygen Mono', monospace;}
       h1 {color: white; font-size: 32px; text-align: center; margin-top: 40%; }
       p { color: white; font-size: 16px; }
       i { color: white }
       input { color: white; }
-
+      h3 { color: white; }
       #new-room-input { max-width: 400px; font-size: 26px; }
       #new-room-input::-webkit-input-placeholder{ font-size: 26px; }
       #new-room-button { margin: 0 auto; border: 2px; border-color: white; }
@@ -31,6 +31,8 @@
     <script src="https://kit.fontawesome.com/718e01dd71.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
+    <!-- <script>confetti.start()</script> -->
     <div id="root">
     </div>
     <script

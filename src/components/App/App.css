@@ -24,6 +24,7 @@
   font-weight: bold;
   box-shadow: 0 0 8px #393939;
   margin: 0 auto;
+  background-color: white;
 }
 
 #show-votes {
@@ -37,26 +38,29 @@
   box-shadow: 0 0 8px #393939;
   margin: 0 auto;
   margin-top: 20px;
+  background-color: white;
 }
 
 #number:hover {
-  background-color: white;
+  background-color: #EBEBEB;
 }
 
 #invite:hover {
-  background-color: white;
+  background-color: #EBEBEB;
 }
 
 #invite:active {
   box-shadow: none;
+  background-color: #EBEBEB;
 }
 
 #show-votes:hover {
-  background-color: white;
+  background-color: #EBEBEB;
 }
 
 #show-votes:active {
   box-shadow: none;
+  background-color: #EBEBEB;
 }
 
 .fas {
