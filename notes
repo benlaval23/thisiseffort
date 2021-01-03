@@ -1,0 +1,11 @@
+show: numbers & NOT show votes
+
+if currentuser.vote = voted:
+
+show: NOT numbers & show vote
+
+if (show):
+
+show NOT numbers & NOT show vote
+
+if 

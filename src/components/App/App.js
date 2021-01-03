@@ -10,7 +10,6 @@ import Confetti from 'react-confetti'
 
 const socket = io.connect('/');
 
-// const { width, height } = useWindowSize()
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +19,8 @@ class App extends React.Component {
       title: '',
       show: false,
       count: 0,
-      confetti: false
+      confetti: false,
+      voted: false
     };
 
     this.changeName = this.changeName.bind(this);
@@ -37,14 +37,45 @@ class App extends React.Component {
     socket.emit('join_room', window.location.pathname, user);
 
     socket.on('room_update', room => {
-      this.setState({
-        users: room.users,
-        title: room.title,
-        show: room.show,
-        count: room.count,
-        confetti: room.confetti
-      });
-      console.log("Current room: ", room);
+
+      room.users.map(u => {
+        if(u.socketId === socket.id) {
+          if (u.vote != 'No vote') {
+            console.log('voted');
+            this.setState({
+              users: room.users,
+              title: room.title,
+              show: room.show,
+              count: room.count,
+              confetti: room.confetti,
+              id: socket.id,
+              voted: true
+            });
+          } else {
+            console.log('not voted');
+            this.setState({
+              users: room.users,
+              title: room.title,
+              show: room.show,
+              count: room.count,
+              confetti: room.confetti,
+              id: socket.id,
+              voted: false
+            });
+          }
+        }
+      })
+
+
+      // this.setState({
+      //   users: room.users,
+      //   title: room.title,
+      //   show: room.show,
+      //   count: room.count,
+      //   confetti: room.confetti,
+      //   id: socket.id
+      // });
+      console.log("Current room: ", this.state);
     });
   };
 
@@ -64,7 +95,6 @@ class App extends React.Component {
     socket.emit('show_votes');
   }
 
-
   refreshTitle() {
     socket.emit('refresh_title');
   }
@@ -78,14 +108,15 @@ class App extends React.Component {
           <Nameshow onChange={this.changeName} />
           <Ticketshow onChange={this.changeTitle} title={this.state.title} onClick={this.refreshTitle}/>
           <Userlist users={this.state.users} show={this.state.show} />
-          <Vote onClick={this.addVote} />
+          {(this.state.voted === false) && <Vote onClick={this.addVote} />}
           <section id="buttons">
             <button id="invite" className="clipboard">
               Invite
             </button>
+            {(this.state.show === false) &&
             <button id="show-votes" onClick={this.showVotes}>
               Show Votes
-            </button>
+            </button>}
           </section>
           <div>
             <p id="copied">Link copied to clipboard!</p>
