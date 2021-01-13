@@ -40,8 +40,7 @@ class App extends React.Component {
 
       room.users.map(u => {
         if(u.socketId === socket.id) {
-          if (u.vote != 'No vote') {
-            console.log('voted');
+          if (u.vote !== 'No vote') {
             this.setState({
               users: room.users,
               title: room.title,
@@ -52,7 +51,6 @@ class App extends React.Component {
               voted: true
             });
           } else {
-            console.log('not voted');
             this.setState({
               users: room.users,
               title: room.title,
@@ -65,17 +63,6 @@ class App extends React.Component {
           }
         }
       })
-
-
-      // this.setState({
-      //   users: room.users,
-      //   title: room.title,
-      //   show: room.show,
-      //   count: room.count,
-      //   confetti: room.confetti,
-      //   id: socket.id
-      // });
-      console.log("Current room: ", this.state);
     });
   };
 
