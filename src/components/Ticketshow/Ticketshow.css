@@ -4,20 +4,12 @@ form {
   margin-right: 0;
 }
 
-.name {
-  width: 80%;
-  height: 40px;
-  background: none;
-  border: none;
-}
-
 .ticket {
   width: 69%;
   height: 40px;
   background: none;
   border: none;
 }
-
 
 input::-webkit-input-placeholder {
   color: white;
@@ -52,7 +44,6 @@ button:focus {
   border-radius: 10px;
 }
 
-
 #refresh:hover {
   background: rgba(256, 256, 256, 0.4);
 }
@@ -60,7 +51,6 @@ button:focus {
 #refresh:active {
   background: rgba(256, 256, 256, 0.2);
 }
-
 
 .fas {
   transform: scale(1.5,1.5);

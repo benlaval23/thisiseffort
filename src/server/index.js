@@ -26,7 +26,6 @@ const emitRoom = room => {
   io.to(room).emit("room_update", rooms[room]);
 };
 
-
 // Sockets // Rooms //
 io.on('connection', socket => {
   console.log('a user connected: ', socket.id);
@@ -41,18 +40,17 @@ io.on('connection', socket => {
         title: null,
         show: false,
         count: 1,
-        confetti: false
+        confetti: false,
+        showButton: false
       };
     } else {
       rooms[room].count += 1;
       rooms[room].users.push(user);
     }
     emitRoom(room);
-    console.log(rooms[room]);
 
     socket.on('change_title', newTitle => {
       rooms[room].title = newTitle;
-      console.log(rooms[room])
       emitRoom(room);
     });
 
@@ -62,7 +60,6 @@ io.on('connection', socket => {
           u.name = newName;
         };
       });
-      console.log(rooms[room]);
       emitRoom(room);
     });
 
@@ -73,7 +70,7 @@ io.on('connection', socket => {
           u.status = 'Voted';
         }
       });
-      console.log(rooms[room]);
+      rooms[room].showButton = true;
       emitRoom(room);
     });
 
@@ -82,7 +79,7 @@ io.on('connection', socket => {
       if (rooms[room].users.every( u => u.vote === rooms[room].users[0].vote)) {
         rooms[room].confetti = true;
       };
-      console.log(rooms[room]);
+      rooms[room].showButton = false;
       emitRoom(room);
     });
 
@@ -94,7 +91,6 @@ io.on('connection', socket => {
       rooms[room].title = '';
       rooms[room].show = false;
       rooms[room].confetti = false;
-      console.log(rooms[room]);
       emitRoom(room);
     });
 
@@ -107,7 +103,6 @@ io.on('connection', socket => {
         };
       });
       rooms[room].count -= 1;
-      console.log(rooms[room]);
       emitRoom(room);
     });
   });

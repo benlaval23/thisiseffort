@@ -37,10 +37,6 @@
   background-color: white;
 }
 
-#number:hover {
-  background-color: #EBEBEB;
-}
-
 #invite:hover {
   background-color: #EBEBEB;
 }
@@ -63,56 +59,4 @@
   transform: scale(1.5, 1.5);
 }
 
-#new-room-button {
-  margin: 0;
-  width: 60px;
-  height: 40px;
-  border: none;
-  background: none;
-  color: white;
-  border-radius: 10px;
-  background: rgba(256, 256, 256, 0.4);
-}
 
-#new-room-button:hover {
-  background: rgba(256, 256, 256, 0.4);
-}
-
-#new-room-button:active {
-  background: rgba(256, 256, 256, 0.2);
-}
-
-.chooseRoom {
-  margin-top: 60px;
-}
-
-#chooseRoom {
-  text-align: center;
-  width: 80%;
-  display: grid;
-  grid-template-columns: 85% 15%;
-  grid-template-rows: 1fr;
-  justify-content: center;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-@media (max-width: 473px) {
-  #new-room-input {
-    text-align: center;
-  }
-
-  #new-room-button {
-    margin-top: 40px;
-    justify-self: center;
-  }
-
-  #chooseRoom {
-    text-align: center;
-    width: 80%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    justify-content: center;
-  }
-}

@@ -48,7 +48,8 @@ class App extends React.Component {
               count: room.count,
               confetti: room.confetti,
               id: socket.id,
-              voted: true
+              voted: true,
+              showButton: room.showButton
             });
           } else {
             this.setState({
@@ -58,7 +59,8 @@ class App extends React.Component {
               count: room.count,
               confetti: room.confetti,
               id: socket.id,
-              voted: false
+              voted: false,
+              showButton: room.showButton
             });
           }
         }
@@ -100,7 +102,7 @@ class App extends React.Component {
             <button id="invite" className="clipboard">
               Invite
             </button>
-            {(this.state.show === false) &&
+            {(this.state.showButton === true) &&
             <button id="show-votes" onClick={this.showVotes}>
               Show Votes
             </button>}
