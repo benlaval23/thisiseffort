@@ -12,6 +12,8 @@ const PORT = process.env.PORT || 3300;
 
 const root = path.join(__dirname, '/../../build')
 
+require ('newrelic');
+
 app.use( express.static(root));
 
 app.get('*', (req, res) => {
