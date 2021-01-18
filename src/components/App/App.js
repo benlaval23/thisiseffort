@@ -110,7 +110,7 @@ class App extends React.Component {
             <p id="copied">Link copied to clipboard!</p>
           </div>
         </div>
-        {(this.state.confetti === true)  && <Confetti width="2000" height="1000" />}
+        {(this.state.confetti === true) && <Confetti width="2000" height="1000" />}
       </div>
     );
   }
