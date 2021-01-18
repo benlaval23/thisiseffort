@@ -92,7 +92,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {this.state.confetti  && <Confetti width="2000" height="1000" />}
         <div className="main">
           <Nameshow onChange={this.changeName} />
           <Ticketshow onChange={this.changeTitle} title={this.state.title} onClick={this.refreshTitle}/>
@@ -111,6 +110,7 @@ class App extends React.Component {
             <p id="copied">Link copied to clipboard!</p>
           </div>
         </div>
+        {(this.state.confetti === true)  && <Confetti width="2000" height="1000" />}
       </div>
     );
   }
