@@ -20,7 +20,9 @@ class App extends React.Component {
       show: false,
       count: 0,
       confetti: false,
-      voted: false
+      voted: false,
+      showButton: false,
+      admin: null
     };
 
     this.changeName = this.changeName.bind(this);
@@ -49,7 +51,8 @@ class App extends React.Component {
               confetti: room.confetti,
               id: socket.id,
               voted: true,
-              showButton: room.showButton
+              showButton: room.showButton,
+              admin: room.admin
             });
           } else {
             this.setState({
@@ -60,7 +63,8 @@ class App extends React.Component {
               confetti: room.confetti,
               id: socket.id,
               voted: false,
-              showButton: room.showButton
+              showButton: room.showButton,
+              admin: room.admin
             });
           }
         }
@@ -94,7 +98,7 @@ class App extends React.Component {
       <div className="App">
         <div className="main">
           <Nameshow onChange={this.changeName} />
-          <Ticketshow onChange={this.changeTitle} title={this.state.title} onClick={this.refreshTitle}/>
+          <Ticketshow onChange={this.changeTitle} title={this.state.title} onClick={this.refreshTitle} admin={this.state.admin} currentId={this.state.id}/>
           <Userlist users={this.state.users} show={this.state.show} />
           {(this.state.voted === false) && <Vote onClick={this.addVote} />}
           <section id="buttons">
@@ -110,7 +114,7 @@ class App extends React.Component {
             <p id="copied">Link copied to clipboard!</p>
           </div>
         </div>
-        {(this.state.confetti === true) && <Confetti width="2000" height="1000" />}
+        {/* {(this.state.confetti === true) && <Confetti width="2000" height="1000" />} */}
       </div>
     );
   }

@@ -43,7 +43,8 @@ io.on('connection', socket => {
         show: false,
         count: 1,
         confetti: false,
-        showButton: false
+        showButton: false,
+        admin: user.socketId
       };
     } else {
       rooms[room].count += 1;
