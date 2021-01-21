@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
+const { wakeDyno } = require('heroku-keep-awake');
 const io = require('socket.io')(server, {
   cors: {
     origin: '*',
@@ -9,6 +10,13 @@ const io = require('socket.io')(server, {
   },
 });
 const PORT = process.env.PORT || 3300;
+const DYNO_URL = 'http://www.thisiseffort.io';
+
+const opts = {
+  interval: 29,
+  logging: false,
+  stopTimes: { start: '00:00', end: '00:01' }
+}
 
 const root = path.join(__dirname, '/../../build')
 
@@ -114,4 +122,5 @@ io.on('connection', socket => {
 
 server.listen(PORT, () => {
   console.log(`listening on *:${PORT}`);
+  wakeDyno(DYNO_URL, opts);
 });
