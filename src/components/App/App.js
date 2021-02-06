@@ -6,10 +6,9 @@ import { Vote } from '../Vote/Vote';
 import React from 'react';
 import '../Userlist/Userlist.css';
 import io from 'socket.io-client';
-import Confetti from 'react-confetti'
+import Confetti from 'react-confetti';
 
 const socket = io.connect('/');
-
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class App extends React.Component {
       confetti: false,
       voted: false,
       showButton: false,
-      admin: null
+      admin: null,
     };
 
     this.changeName = this.changeName.bind(this);
@@ -39,9 +38,8 @@ class App extends React.Component {
     socket.emit('join_room', window.location.pathname, user);
 
     socket.on('room_update', room => {
-
       room.users.map(u => {
-        if(u.socketId === socket.id) {
+        if (u.socketId === socket.id) {
           if (u.vote !== 'No vote') {
             this.setState({
               users: room.users,
@@ -52,7 +50,7 @@ class App extends React.Component {
               id: socket.id,
               voted: true,
               showButton: room.showButton,
-              admin: room.admin
+              admin: room.admin,
             });
           } else {
             this.setState({
@@ -64,13 +62,13 @@ class App extends React.Component {
               id: socket.id,
               voted: false,
               showButton: room.showButton,
-              admin: room.admin
+              admin: room.admin,
             });
           }
         }
-      })
+      });
     });
-  };
+  }
 
   changeName(newName) {
     socket.emit('change_name', newName);
@@ -92,23 +90,29 @@ class App extends React.Component {
     socket.emit('refresh_title');
   }
 
-
   render() {
     return (
       <div className="App">
         <div className="main">
           <Nameshow onChange={this.changeName} />
-          <Ticketshow onChange={this.changeTitle} title={this.state.title} onClick={this.refreshTitle} admin={this.state.admin} currentId={this.state.id}/>
+          <Ticketshow
+            onChange={this.changeTitle}
+            title={this.state.title}
+            onClick={this.refreshTitle}
+            admin={this.state.admin}
+            currentId={this.state.id}
+          />
           <Userlist users={this.state.users} show={this.state.show} />
-          {(this.state.voted === false) && <Vote onClick={this.addVote} />}
+          {this.state.voted === false && <Vote onClick={this.addVote} />}
           <section id="buttons">
             <button id="invite" className="clipboard">
-              Invite
+              Copy invitation link
             </button>
-            {(this.state.showButton === true) &&
-            <button id="show-votes" onClick={this.showVotes}>
-              Show Votes
-            </button>}
+            {this.state.showButton === true && (
+              <button id="show-votes" onClick={this.showVotes}>
+                Show Votes
+              </button>
+            )}
           </section>
           <div>
             <p id="copied">Link copied to clipboard!</p>
