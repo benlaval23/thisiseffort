@@ -111,6 +111,9 @@ io.on('connection', socket => {
         if (u.socketId === socket.id) {
           const index = rooms[room].users.indexOf(u);
           rooms[room].users.splice(index, 1);
+          if (u.socketId === rooms[room].admin) {
+            rooms[room].admin = rooms[room].users[0].socketId
+          };
         };
       });
       rooms[room].count -= 1;
