@@ -10,41 +10,45 @@ const io = require('socket.io')(server, {
   },
 });
 const PORT = process.env.PORT || 3300;
-const DYNO_URL = 'http://www.thisiseffort.io';
+const DYNO_URLS = [
+  'http://www.thisiseffort.io',
+  'https://slack-thisiseffort.herokuapp.com/',
+  'https://slack-effort-bot.herokuapp.com/',
+  'https://slack-effort-app.herokuapp.com/',
+];
 
 const opts = {
   interval: 29,
   logging: false,
-  stopTimes: { start: '00:00', end: '00:01' }
-}
+  stopTimes: { start: '00:00', end: '00:01' },
+};
 
-const root = path.join(__dirname, '/../../build')
+const root = path.join(__dirname, '/../../build');
 
-require ('newrelic');
+require('newrelic');
 
-app.use( express.static(root));
+app.use(express.static(root));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(root, 'index.html'));
 });
 
-
 var rooms = {};
 
 // Emit function //
 const emitRoom = room => {
-  io.to(room).emit("room_update", rooms[room]);
+  io.to(room).emit('room_update', rooms[room]);
 };
 
 // Sockets // Rooms //
 io.on('connection', socket => {
   console.log('a user connected: ', socket.id);
 
-  socket.on('join_room', function(room, user) {
+  socket.on('join_room', function (room, user) {
     socket.join(room);
     user.socketId = socket.id;
 
-    if (typeof rooms[room] === "undefined") {
+    if (typeof rooms[room] === 'undefined') {
       rooms[room] = {
         users: [user],
         title: null,
@@ -52,7 +56,7 @@ io.on('connection', socket => {
         count: 1,
         confetti: false,
         showButton: false,
-        admin: user.socketId
+        admin: user.socketId,
       };
     } else {
       rooms[room].count += 1;
@@ -69,7 +73,7 @@ io.on('connection', socket => {
       rooms[room].users.map(u => {
         if (u.socketId === socket.id) {
           u.name = newName;
-        };
+        }
       });
       emitRoom(room);
     });
@@ -87,9 +91,9 @@ io.on('connection', socket => {
 
     socket.on('show_votes', () => {
       rooms[room].show = true;
-      if (rooms[room].users.every( u => u.vote === rooms[room].users[0].vote)) {
+      if (rooms[room].users.every(u => u.vote === rooms[room].users[0].vote)) {
         rooms[room].confetti = true;
-      };
+      }
       rooms[room].showButton = false;
       emitRoom(room);
     });
@@ -97,7 +101,7 @@ io.on('connection', socket => {
     socket.on('refresh_title', () => {
       rooms[room].users.map(u => {
         u.vote = 'No vote';
-        u.status = 'Awaiting'
+        u.status = 'Awaiting';
       });
       rooms[room].title = '';
       rooms[room].show = false;
@@ -112,18 +116,17 @@ io.on('connection', socket => {
           const index = rooms[room].users.indexOf(u);
           rooms[room].users.splice(index, 1);
           if (u.socketId === rooms[room].admin && rooms[room].users.length > 0) {
-            rooms[room].admin = rooms[room].users[0].socketId
-          };
-        };
+            rooms[room].admin = rooms[room].users[0].socketId;
+          }
+        }
       });
       rooms[room].count -= 1;
       emitRoom(room);
     });
   });
-
 });
 
 server.listen(PORT, () => {
   console.log(`listening on *:${PORT}`);
-  wakeDyno(DYNO_URL, opts);
+  wakeDyno(DYNO_URLS, opts);
 });
