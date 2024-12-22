@@ -128,5 +128,5 @@ io.on('connection', socket => {
 
 server.listen(PORT, () => {
   console.log(`listening on *:${PORT}`);
-  wakeDyno(DYNO_URLS, opts);
+  // wakeDyno(DYNO_URLS, opts);
 });
