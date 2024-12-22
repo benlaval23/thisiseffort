@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^12.1.10",
     "express": "^4.17.1",
     "heroku-keep-awake": "^1.1.2",
-    "newrelic": "^7.1.0",
     "react": "^17.0.1",
     "react-confetti": "^6.0.0",
     "react-dom": "^17.0.1",
