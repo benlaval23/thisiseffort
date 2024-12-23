@@ -7,6 +7,8 @@ import React from 'react';
 import '../Userlist/Userlist.css';
 import io from 'socket.io-client';
 import Confetti from 'react-confetti';
+import { Analytics } from '@vercel/analytics/react';
+
 
 const socket = io.connect('/');
 
@@ -93,6 +95,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Analytics />
         <div className="main">
           <Nameshow onChange={this.changeName} />
           <Ticketshow

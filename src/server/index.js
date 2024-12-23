@@ -28,10 +28,12 @@ const emitRoom = room => {
 // Sockets // Rooms //
 io.on('connection', socket => {
   console.log('a user connected: ', socket.id);
+  
 
   socket.on('join_room', function (room, user) {
     socket.join(room);
     user.socketId = socket.id;
+    console.log('Room: ', room)
 
     if (typeof rooms[room] === 'undefined') {
       rooms[room] = {
