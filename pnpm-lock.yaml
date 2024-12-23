@@ -10,13 +10,13 @@ dependencies:
     version: 5.17.0
   '@testing-library/react':
     specifier: ^11.1.0
-    version: 11.2.7(react-dom@17.0.2)(react@17.0.2)
+    version: 11.2.7(react-dom@17.0.2)(react@@vercel+analytics+react)
   '@testing-library/user-event':
     specifier: ^12.1.10
     version: 12.8.3(@testing-library/dom@10.4.0)
   '@vercel/analytics':
     specifier: ^1.4.1
-    version: 1.4.1(react@17.0.2)
+    version: 1.4.1(react@@vercel+analytics+react)
   express:
     specifier: ^4.17.1
     version: 4.21.2(supports-color@6.1.0)
@@ -24,20 +24,20 @@ dependencies:
     specifier: ^1.1.2
     version: 1.1.2
   react:
-    specifier: ^17.0.1
-    version: 17.0.2
+    specifier: link:@vercel/analytics/react
+    version: link:@vercel/analytics/react
   react-confetti:
     specifier: ^6.0.0
-    version: 6.1.0(react@17.0.2)
+    version: 6.1.0(react@@vercel+analytics+react)
   react-dom:
     specifier: ^17.0.1
-    version: 17.0.2(react@17.0.2)
+    version: 17.0.2(react@@vercel+analytics+react)
   react-router-dom:
     specifier: ^5.2.0
-    version: 5.3.4(react@17.0.2)
+    version: 5.3.4(react@@vercel+analytics+react)
   react-scripts:
     specifier: 4.0.1
-    version: 4.0.1(eslint@7.32.0)(react@17.0.2)(typescript@5.7.2)
+    version: 4.0.1(eslint@7.32.0)(react@@vercel+analytics+react)(typescript@5.7.2)
   socket.io:
     specifier: ^3.0.4
     version: 3.1.2
@@ -3161,7 +3161,7 @@ packages:
       redent: 3.0.0
     dev: false
 
-  /@testing-library/react@11.2.7(react-dom@17.0.2)(react@17.0.2):
+  /@testing-library/react@11.2.7(react-dom@17.0.2)(react@@vercel+analytics+react):
     resolution: {integrity: sha512-tzRNp7pzd5QmbtXNG/mhdcl7Awfu/Iz1RaVHY75zTdOkmHCuzMhRL83gWHSgOAcjS3CCbyfwUHMZgRJb4kAfpA==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -3170,8 +3170,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.26.0
       '@testing-library/dom': 7.31.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: link:@vercel/analytics/react
+      react-dom: 17.0.2(react@@vercel+analytics+react)
     dev: false
 
   /@testing-library/user-event@12.8.3(@testing-library/dom@10.4.0):
@@ -3551,7 +3551,7 @@ packages:
       eslint-visitor-keys: 2.1.0
     dev: false
 
-  /@vercel/analytics@1.4.1(react@17.0.2):
+  /@vercel/analytics@1.4.1(react@@vercel+analytics+react):
     resolution: {integrity: sha512-ekpL4ReX2TH3LnrRZTUKjHHNpNy9S1I7QmS+g/RQXoSUQ8ienzosuX7T9djZ/s8zPhBx1mpHP/Rw5875N+zQIQ==}
     peerDependencies:
       '@remix-run/react': ^2
@@ -3577,7 +3577,7 @@ packages:
       vue-router:
         optional: true
     dependencies:
-      react: 17.0.2
+      react: link:@vercel/analytics/react
     dev: false
 
   /@webassemblyjs/ast@1.9.0:
@@ -11351,13 +11351,13 @@ packages:
       whatwg-fetch: 3.6.20
     dev: false
 
-  /react-confetti@6.1.0(react@17.0.2):
+  /react-confetti@6.1.0(react@@vercel+analytics+react):
     resolution: {integrity: sha512-7Ypx4vz0+g8ECVxr88W9zhcQpbeujJAVqL14ZnXJ3I23mOI9/oBVTQ3dkJhUmB0D6XOtCZEM6N0Gm9PMngkORw==}
     engines: {node: '>=10.18'}
     peerDependencies:
       react: ^16.3.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      react: 17.0.2
+      react: link:@vercel/analytics/react
       tween-functions: 1.2.0
     dev: false
 
@@ -11403,14 +11403,14 @@ packages:
       - vue-template-compiler
     dev: false
 
-  /react-dom@17.0.2(react@17.0.2):
+  /react-dom@17.0.2(react@@vercel+analytics+react):
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
       react: 17.0.2
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-      react: 17.0.2
+      react: link:@vercel/analytics/react
       scheduler: 0.20.2
     dev: false
 
@@ -11435,7 +11435,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /react-router-dom@5.3.4(react@17.0.2):
+  /react-router-dom@5.3.4(react@@vercel+analytics+react):
     resolution: {integrity: sha512-m4EqFMHv/Ih4kpcBCONHbkT68KoAeHN4p3lAGoNryfHi0dMy0kCzEZakiKRsvg5wHZ/JLrLW8o8KomWiz/qbYQ==}
     peerDependencies:
       react: '>=15'
@@ -11444,13 +11444,13 @@ packages:
       history: 4.10.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 17.0.2
-      react-router: 5.3.4(react@17.0.2)
+      react: link:@vercel/analytics/react
+      react-router: 5.3.4(react@@vercel+analytics+react)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
     dev: false
 
-  /react-router@5.3.4(react@17.0.2):
+  /react-router@5.3.4(react@@vercel+analytics+react):
     resolution: {integrity: sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==}
     peerDependencies:
       react: '>=15'
@@ -11461,13 +11461,13 @@ packages:
       loose-envify: 1.4.0
       path-to-regexp: 1.9.0
       prop-types: 15.8.1
-      react: 17.0.2
+      react: link:@vercel/analytics/react
       react-is: 16.13.1
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
     dev: false
 
-  /react-scripts@4.0.1(eslint@7.32.0)(react@17.0.2)(typescript@5.7.2):
+  /react-scripts@4.0.1(eslint@7.32.0)(react@@vercel+analytics+react)(typescript@5.7.2):
     resolution: {integrity: sha512-NnniMSC/wjwhcJAyPJCWtxx6CWONqgvGgV9+QXj1bwoW/JI++YF1eEf3Upf/mQ9KmP57IBdjzWs1XvnPq7qMTQ==}
     engines: {node: ^10.12.0 || >=12.0.0}
     hasBin: true
@@ -11522,7 +11522,7 @@ packages:
       postcss-preset-env: 6.7.0
       postcss-safe-parser: 5.0.2
       prompts: 2.4.0
-      react: 17.0.2
+      react: link:@vercel/analytics/react
       react-app-polyfill: 2.0.0
       react-dev-utils: 11.0.4(eslint@7.32.0)(typescript@5.7.2)(webpack@4.44.2)
       react-refresh: 0.8.3
@@ -11561,14 +11561,6 @@ packages:
       - webpack-command
       - webpack-hot-middleware
       - webpack-plugin-serve
-    dev: false
-
-  /react@17.0.2:
-    resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
     dev: false
 
   /read-pkg-up@7.0.1:
